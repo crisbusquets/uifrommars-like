@@ -1,0 +1,96 @@
+:root {
+  --uimars-bg-default: white;
+  --uimars-color-default: #322f2f;
+  --uimars-bg-liked: hsl(351, 100%, 96%);
+  --uimars-border-liked: #ffcdd2;
+}
+
+.uifrommars-like-btn {
+  background-color: var(--white);
+  display: flex;
+  color: var(--dark-gray);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  flex-direction: row;
+  align-self: flex-start;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.uifrommars-like-btn:hover {
+  background-color: var(--warm);
+}
+
+.uifrommars-like-btn.liked {
+  background-color: var(--light-mars);
+  color: var(--mars);
+}
+
+.like-icon {
+  margin-right: 6px;
+  transition: transform 0.2s ease;
+}
+.uifrommars-like-btn:hover .like-icon {
+  transform: scale(1.2);
+}
+
+.uifrommars-like-count {
+  font-size: 16px;
+  font-weight: 500;
+  color: inherit;
+  margin-left: 8px;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  padding-left: 8px;
+}
+
+/* Top liked posts styles */
+.uifrommars-top-liked-posts {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fafafa;
+}
+
+.uifrommars-top-liked-heading {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.uifrommars-top-liked-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.uifrommars-top-liked-item {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uifrommars-top-liked-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.uifrommars-top-liked-count {
+  font-size: 14px;
+  color: #999;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* Block editor styles */
+.uifrommars-block-preview {
+  background-color: #fafafa;
+  border: 1px dashed #ccc;
+  padding: 15px;
+  text-align: center;
+}
