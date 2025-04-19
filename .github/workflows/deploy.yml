@@ -32,9 +32,10 @@ jobs:
             # clone fresh if not already a git repo
             if [ ! -d "$PLUGIN_DIR/.git" ]; then
               rm -rf "$PLUGIN_DIR"
-              git clone git@github.com:crisbusquets/uifrommars-like.git "$PLUGIN_DIR"
+              git clone https://github.com/crisbusquets/uifrommars-like.git "$PLUGIN_DIR"
             else
               cd "$PLUGIN_DIR"
+              git remote set-url origin https://github.com/crisbusquets/uifrommars-like.git
               git reset --hard
               git clean -ffd
               git pull origin main
