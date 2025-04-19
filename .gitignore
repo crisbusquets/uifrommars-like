@@ -35,6 +35,9 @@ wp-config.php
 # htaccess
 /.htaccess
 
+# Remove any already‑tracked DS_Store files from the index
+git rm --cached '*.DS_Store'
+
 # All plugins
 #
 # Note: If you wish to whitelist plugins,
