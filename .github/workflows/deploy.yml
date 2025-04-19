@@ -1,0 +1,41 @@
+name: Deploy Like Plugin to Digital Ocean
+
+on:
+  workflow_dispatch:    # ← allows you to click “Run workflow” in the Actions tab
+  push:
+    branches:
+      - main
+    paths:
+      - 'wp-content/plugins/uifrommars-like/**'
+
+jobs:
+  deploy-plugin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Plugin to DigitalOcean
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DROPLET_IP }}
+          username: ${{ secrets.DROPLET_USER }}
+          key: ${{ secrets.DROPLET_SSH_PRIVATE_KEY }}
+          port: 22
+          script: |
+            PLUGIN_DIR="/var/www/html/wp-content/plugins/uifrommars-like"
+
+            # ensure parent folder exists
+            mkdir -p "$(dirname "$PLUGIN_DIR")"
+
+            # clone fresh if not already a git repo
+            if [ ! -d "$PLUGIN_DIR/.git" ]; then
+              rm -rf "$PLUGIN_DIR"
+              git clone git@github.com:crisbusquets/uifrommars-like.git "$PLUGIN_DIR"
+            else
+              cd "$PLUGIN_DIR"
+              git reset --hard
+              git clean -ffd
+              git pull origin main
+            fi
